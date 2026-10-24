@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Buildlogic-http")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c822ce07bb68109f481d3054cf057e43b0c3ebb4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb600140703c167052d11d397d3188f45a13ea9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Buildlogic-http")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Buildlogic-http")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
