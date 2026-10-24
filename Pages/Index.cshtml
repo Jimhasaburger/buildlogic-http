@@ -4,7 +4,57 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<form id="binaryForm">
+    <div class="button-grid" id="bitContainer">
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+        <button type="button" class="toggle-btn" data-value="0">0</button>
+    </div>
+
+    <button type="submit" class="submit-btn">send</button>
+</form>
+
+<script>
+    const container = document.getElementById('bitContainer');
+    const form = document.getElementById('binaryForm');
+
+    container.addEventListener('click', (e) => {
+        const btn = e.target.closest('.toggle-btn');
+        if (!btn) return;
+
+        const isZero = btn.dataset.value === "0";
+        btn.dataset.value = isZero ? "1" : "0";
+        btn.textContent = isZero ? "1" : "0";
+        btn.classList.toggle('active', isZero);
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Stop page reload
+
+        const buttons = Array.from(container.querySelectorAll('.toggle-btn'));
+        const bitArray = buttons.map(btn => parseInt(btn.dataset.value, 10));
+        
+        const payload = {
+            data: bitArray.join(''), 
+        };
+
+
+        try {
+            const response = await fetch('/data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            
+            if (response.ok) alert('sent');
+        } catch (error) {
+            console.error('failed:', error);
+        }
+    });
+</script>
